@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Button, StyleSheet, Text, View } from 'react-native'
 
 const ActivityChoiceScreen = ({ navigation }) => {
@@ -7,21 +7,16 @@ const ActivityChoiceScreen = ({ navigation }) => {
     const [choice1, setChoice1] = useState('Choice 1');
     const [choice2, setChoice2] = useState('Choice 2');
     const [choice3, setChoice3] = useState('Choice 3');
-    const [selectedChoice, setSelectedChoice] = useState('world');
+    const [selectedChoice, setSelectedChoice] = useState('');
 
 
 
-    const onPressHandler = () => {
-        setSelectedChoice('hello');
-        Navigate();
-        
-    }
-    
-    const Navigate = () => {
-        console.log(selectedChoice);
-        navigation.navigate('ActivitySelection', { choice: [selectedChoice]});
+    useEffect(() => {
+        if (selectedChoice != '') {
+            navigation.navigate('ActivitySelection', { choice: [selectedChoice] });
+        }
+    });
 
-    }
 
 
     return (
@@ -34,7 +29,9 @@ const ActivityChoiceScreen = ({ navigation }) => {
             <View style={styles.choice}>
                 <Text
                     style={styles.text}
-                    onPress={onPressHandler}    
+                    onPress={() => {
+                        setSelectedChoice([choice1]);
+                    }}
                 >
                     {choice1}
                 </Text>
@@ -43,7 +40,9 @@ const ActivityChoiceScreen = ({ navigation }) => {
                 style={styles.choice}>
                 <Text
                     style={styles.text}
-                    onPress={onPressHandler}>
+                    onPress={() => {
+                        setSelectedChoice([choice2]);
+                    }}>
                     {choice2}
                 </Text>
             </View>
@@ -51,7 +50,9 @@ const ActivityChoiceScreen = ({ navigation }) => {
                 style={styles.choice}>
                 <Text
                     style={styles.text}
-                    onPress={onPressHandler}>
+                    onPress={() => {
+                        setSelectedChoice([choice3]);
+                    }}>
                     {choice3}
                 </Text>
             </View>
