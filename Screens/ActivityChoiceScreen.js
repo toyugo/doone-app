@@ -10,6 +10,9 @@ const ActivityChoiceScreen = ({ navigation }) => {
   const [selectedChoice, setSelectedChoice] = useState("");
 
   useEffect(() => {
+    if (choice1 == "Choice 1") {
+      set_Random_activity();
+    }
     if (selectedChoice != "") {
       navigation.navigate("ActivitySelection", { choice: [selectedChoice] });
     }
@@ -50,7 +53,6 @@ const ActivityChoiceScreen = ({ navigation }) => {
   return (
     <View style={styles.body}>
       <View style={styles.question}>
-        <Button title="test" onPress={set_Random_activity} />
         <Text style={styles.text}>{question}</Text>
       </View>
       <View style={styles.choice}>
