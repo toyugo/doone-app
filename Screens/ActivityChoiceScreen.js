@@ -25,7 +25,7 @@ const ActivityChoiceScreen = ({ navigation }) => {
 
   const set_Random_activity = () => {
     let tb = [];
-    const tbNumber = [];
+    let tbNumber = [];
     db.collection("activity")
       .get()
       .then(function (querySnapshot) {
@@ -34,10 +34,10 @@ const ActivityChoiceScreen = ({ navigation }) => {
           tb.push(doc.data().sentence);
         });
         //const tbNumber = getThreeUniqNumber(1, 5);
-        //const activity_sentence = tb[tbNumber[0]];
-        setChoice1(tb[0]);
-        setChoice2(tb[1]);
-        setChoice3(tb[5]);
+        tbNumber = [0, 1, 5];
+        setChoice1(tb[tbNumber[0]]);
+        setChoice2(tb[tbNumber[1]]);
+        setChoice3(tb[tbNumber[2]]);
       });
     //setChoice1("test");
   };
