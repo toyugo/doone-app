@@ -1,5 +1,6 @@
 import * as firebase from 'firebase'
 import 'firebase/firestore';
+import '@firebase/auth';
 //import firestore from '@react-native-firebase/firestore';
 //const firebase = require('firebase/app').default
 const firebaseConfig = {
@@ -21,6 +22,6 @@ if (checkApp === 0){
 const db = app.firestore();
 const auth = firebase.auth();
 
-export { db, auth };
+export { db, auth, firebase };
 //console.log(firebase.initializeApp(firebaseConfig));
 //console.log(FirebaseApp.getApps(context).isEmpty())

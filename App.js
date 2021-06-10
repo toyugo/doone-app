@@ -1,84 +1,64 @@
-import { NavigationContainer } from '@react-navigation/native';
-import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
-import DiscussionScreen from './Screens/DiscussionScreen';
-import ResultsScreen from './Screens/ResultsScreen';
-import ProfilScreen from './Screens/ProfilScreen';
-import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
-import React from 'react';
 
-//const Stack = createStackNavigator();
+import HomeScreen from './Screens/HomeScreen';
+import LoginScreen from './Screens/LoginScreen';
+import RegistrationScreen from './Screens/RegistrationScreen'
+import { NavigationContainer } from '@react-navigation/native';
+import { StatusBar } from 'expo-status-bar';
+import React, { useState } from 'react';
+import { Modal, TextInput, Button, FlatList, Linking, RefreshControl, ScrollView, SectionList, StyleSheet, Text, View, Touchable, TouchableOpacity, TouchableHighlight, TouchableWithoutFeedback, Pressable, Alert, ToastAndroid } from 'react-native';
+import { createStackNavigator } from '@react-navigation/stack';
+import 'react-native-gesture-handler';
+
+const Stack = createStackNavigator();
 //const Tab = createBottomTabNavigator();
-const Tab = createMaterialBottomTabNavigator();
+//const Tab = createMaterialBottomTabNavigator();
 
 export default function App() {
 
-
+  const [loading, setLoading] = useState(true)
+  const [user, setUser] = useState(null)
   
+  
+      return (
+          <NavigationContainer >
+              <Stack.Navigator
+                  screenOptions={{
+                      header: () => null
+                  }}>
+ {/*                  { user ? ( 
+                  <Stack.Screen
+                      name="Home"
+                      component={HomeScreen}
+  
+                  >
+                    {props => <HomeScreen {...props} extraData={user} />}
+                  </Stack.Screen>
+                    ) : (
+                    <> */}
 
-  return (
-    <NavigationContainer>
-      <Tab.Navigator
-       /*  screenOptions={{
-          header: () => null
-        }} */
-        screenOptions={({ route }) => ({
-          tabBarIcon: ({ focused, size, color }) => {
-            let iconName;
-            if (route.name === 'Discussion') {
-              iconName = 'comments';
-              size = focused ? 30 : 25;
-
-
-            } else if (route.name === 'Results') {
-              iconName = 'chart-line';
-              size = focused ? 30 : 25;
-
-            } else if (route.name === 'Profil') {
-              iconName = 'id-badge';
-              size = focused ? 30 : 25;
-
-            }
-            return (
-              <FontAwesome5
-                name={iconName}
-                size={size}
-              />
-
-            )
-
-          }
-
-        })
-
-        }
-
-
-        activeColor='#f0edf6'
-        inactiveColor='#3e2465'
-        barStyle={{ backgroundColor: '#694fad' }}
-
-      >
-        <Tab.Screen
-          name="Discussion"
-          component={DiscussionScreen}
-
-        />
-        <Tab.Screen
-          name="Results"
-          component={ResultsScreen}
-        />
-
-        <Tab.Screen
-          name="Profil"
-          component={ProfilScreen}
-        />
-
-
-      </Tab.Navigator>
-
-    </NavigationContainer>
-
-
-  )
-
-}
+                  <Stack.Screen
+                      name="Login"
+                      component={LoginScreen}
+                  />
+                  <Stack.Screen
+                      name="Registration"
+                      component={RegistrationScreen}
+                  />
+                  <Stack.Screen
+                      name="Home"
+                      component={HomeScreen}
+                    />
+{/*                     </>
+                  )} */}
+              </Stack.Navigator>
+  
+  
+  
+          </NavigationContainer>
+  
+  
+      )
+  
+  
+  
+  }
