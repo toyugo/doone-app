@@ -19,10 +19,14 @@ const ActivityChoiceScreen = ({ navigation }) => {
     return Math.floor(Math.random() * (max - min + 1)) + min;
   }
 
-  function getThreeUniqNumber(max) {
-    tb.push(Math.floor(Math.random() * (max - min + 1)) + min);
+  function getRandomInts(quantity, max) {
+    const arr = [];
+    while (arr.length < quantity) {
+      var candidateInt = Math.floor(Math.random() * max) + 1;
+      if (arr.indexOf(candidateInt) === -1) arr.push(candidateInt);
+    }
+    return arr;
   }
-
   const set_Random_activity = () => {
     let tb = [];
     let tbNumber = [];
@@ -35,6 +39,7 @@ const ActivityChoiceScreen = ({ navigation }) => {
         });
         //const tbNumber = getThreeUniqNumber(1, 5);
         tbNumber = [0, 1, 5];
+        tbNumber = getRandomInts(3, 5);
         setChoice1(tb[tbNumber[0]]);
         setChoice2(tb[tbNumber[1]]);
         setChoice3(tb[tbNumber[2]]);
