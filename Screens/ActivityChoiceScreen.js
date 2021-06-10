@@ -33,13 +33,13 @@ const ActivityChoiceScreen = ({ navigation }) => {
           // doc.data() is never undefined for query doc snapshots
           tb.push(doc.data().sentence);
         });
-        const tbNumber = getThreeUniqNumber(1, 5);
+        //const tbNumber = getThreeUniqNumber(1, 5);
         //const activity_sentence = tb[tbNumber[0]];
         setChoice1(tb[0]);
         setChoice2(tb[1]);
         setChoice3(tb[5]);
       });
-    //return tb;
+    //setChoice1("test");
   };
 
   return (
