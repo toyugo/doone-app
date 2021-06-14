@@ -15,17 +15,14 @@ const Stack = createStackNavigator();
 
 export default function App() {
 
-  const [loading, setLoading] = useState(true)
-  const [user, setUser] = useState(null)
-  
-  
-      return (
-          <NavigationContainer >
-              <Stack.Navigator
-                  screenOptions={{
-                      header: () => null
-                  }}>
- {/*                  { user ? ( 
+
+  return (
+    <NavigationContainer >
+      <Stack.Navigator
+        screenOptions={{
+          header: () => null
+        }}>
+        {/*                  { user ? ( 
                   <Stack.Screen
                       name="Home"
                       component={HomeScreen}
@@ -36,29 +33,31 @@ export default function App() {
                     ) : (
                     <> */}
 
-                  <Stack.Screen
-                      name="Login"
-                      component={LoginScreen}
-                  />
-                  <Stack.Screen
-                      name="Registration"
-                      component={RegistrationScreen}
-                  />
-                  <Stack.Screen
-                      name="Home"
-                      component={HomeScreen}
-                    />
-{/*                     </>
+
+        <Stack.Screen
+          name="Login"
+          component={LoginScreen}
+        />
+        <Stack.Screen
+          name="Registration"
+          component={RegistrationScreen}
+        />
+        <Stack.Screen
+          name="Home"
+          component={HomeScreen}
+        />
+
+        {/*                     </>
                   )} */}
-              </Stack.Navigator>
-  
-  
-  
-          </NavigationContainer>
-  
-  
-      )
-  
-  
-  
-  }
+      </Stack.Navigator>
+
+
+
+    </NavigationContainer>
+
+
+  )
+
+
+
+}
