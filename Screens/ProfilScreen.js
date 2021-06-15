@@ -1,25 +1,38 @@
-import { NavigationContainer } from '@react-navigation/native';
-import { StatusBar } from 'expo-status-bar';
-import React, { useState } from 'react';
-import { Modal, TextInput, Button, FlatList, Linking, RefreshControl, ScrollView, SectionList, StyleSheet, Text, View, Touchable, TouchableOpacity, TouchableHighlight, TouchableWithoutFeedback, Pressable, Alert, ToastAndroid } from 'react-native';
-import { createStackNavigator } from '@react-navigation/stack';
-
+import { NavigationContainer } from "@react-navigation/native";
+import { StatusBar } from "expo-status-bar";
+import React, { useState } from "react";
+import {
+  Modal,
+  TextInput,
+  Button,
+  FlatList,
+  Linking,
+  RefreshControl,
+  ScrollView,
+  SectionList,
+  StyleSheet,
+  Text,
+  View,
+  Touchable,
+  TouchableOpacity,
+  TouchableHighlight,
+  TouchableWithoutFeedback,
+  Pressable,
+  Alert,
+  ToastAndroid,
+} from "react-native";
+import { createStackNavigator } from "@react-navigation/stack";
 
 export default function ProfilScreen({ navigation }) {
+  const onPressHandler = () => {
+    // navigation.navigate('Screen_A')
+    navigation.goBack();
+  };
 
-    const onPressHandler = () => {
-        // navigation.navigate('Screen_A')
-        navigation.goBack();
-
-    }
-
-
-    return (
-        <View style={styles.body}>
-            <Text style={styles.text}>
-                Profil Screen
-            </Text>
-            {/*         <Text style={styles.text}>
+  return (
+    <View style={styles.body}>
+      <Text style={styles.text}>Profil Screen</Text>
+      {/*         <Text style={styles.text}>
           Screen B
         </Text>
   
@@ -34,31 +47,20 @@ export default function ProfilScreen({ navigation }) {
           </Text>
   
         </Pressable> */}
-
-        </View>
-
-
-    )
+    </View>
+  );
 }
 
 const styles = StyleSheet.create({
+  body: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+  },
 
-    body: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-
-
-
-    },
-
-
-    text: {
-        fontSize: 40,
-        fontWeight: 'bold',
-        margin: 10,
-
-
-    }
-
-})
+  text: {
+    fontSize: 40,
+    fontWeight: "bold",
+    margin: 10,
+  },
+});
