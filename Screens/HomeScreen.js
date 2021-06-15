@@ -35,7 +35,7 @@ const HomeScreen = () => {
             );
           },
         })}
-        activeColor="#7E22FF"
+        activeColor="#FFB680"
         inactiveColor="#FFB680"
         barStyle={{ backgroundColor: "#FFEEED" }}
       >
