@@ -27,6 +27,9 @@ const ActivityChoiceScreen = ({ navigation }) => {
   function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
   }
+  function testWrite() {
+    console.log("test");
+  }
 
   function getRandomInts(quantity, max) {
     const arr = [];
@@ -85,35 +88,41 @@ const ActivityChoiceScreen = ({ navigation }) => {
           <Text style={styles.textmessage}>{question}</Text>
         </View>
       </View>
-      <View
-        style={styles.reponse}
-        onPress={() => {
-          setIdActivity("");
-          setSelectedChoice([choice1]);
-          set_user_activity(choice1);
-        }}
-      >
-        <Text>{choice1}</Text>
+      <View>
+        <Text
+          style={styles.reponse}
+          onPress={() => {
+            setIdActivity("");
+            setSelectedChoice([choice1]);
+            set_user_activity(choice1);
+          }}
+        >
+          {choice1}
+        </Text>
       </View>
-      <View
-        style={styles.reponse}
-        onPress={() => {
-          setIdActivity("");
-          setSelectedChoice([choice2]);
-          set_user_activity(choice2);
-        }}
-      >
-        <Text>{choice2}</Text>
+      <View>
+        <Text
+          style={styles.reponse}
+          onPress={() => {
+            setIdActivity("");
+            setSelectedChoice([choice2]);
+            set_user_activity(choice2);
+          }}
+        >
+          {choice2}
+        </Text>
       </View>
-      <View
-        style={styles.reponse}
-        onPress={() => {
-          setIdActivity("");
-          setSelectedChoice([choice3]);
-          set_user_activity(choice3);
-        }}
-      >
-        <Text>{choice3}</Text>
+      <View>
+        <Text
+          style={styles.reponse}
+          onPress={() => {
+            setIdActivity("");
+            setSelectedChoice([choice3]);
+            set_user_activity(choice3);
+          }}
+        >
+          {choice3}
+        </Text>
       </View>
       <View style={styles.positionRoux}>
         <Image
