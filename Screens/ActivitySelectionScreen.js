@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View, Image } from "react-native";
 import styles from "./style_main";
 
 const ActivitySelectionScreen = ({ navigation, route }) => {
@@ -10,11 +10,19 @@ const ActivitySelectionScreen = ({ navigation, route }) => {
 
   return (
     <View style={styles.body}>
-      <View style={styles.answer}>
-        <Text style={styles.text}>{choice}</Text>
+      <View style={styles.center}>
+        <View style={styles.endchoice}>
+          <Text style={styles.textmessage}>{choice}</Text>
+        </View>
+        <View style={styles.endmessage}>
+          <Text style={styles.textmessage}>{question}</Text>
+        </View>
       </View>
-      <View style={styles.question}>
-        <Text style={styles.text}>{question}</Text>
+      <View style={styles.positionRoux}>
+        <Image
+          style={styles.iconRoux}
+          source={require("../assets/roux_small.png")}
+        />
       </View>
     </View>
   );

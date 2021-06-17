@@ -80,7 +80,6 @@ const ActivityChoiceScreen = ({ navigation }) => {
     if (firebase.auth().currentUser !== null)
       setIdUser(firebase.auth().currentUser.uid);
   }
-
   return (
     <View style={styles.body}>
       <View style={styles.message}>
@@ -88,9 +87,9 @@ const ActivityChoiceScreen = ({ navigation }) => {
           <Text style={styles.textmessage}>{question}</Text>
         </View>
       </View>
-      <View>
+      <View style={styles.reponse}>
         <Text
-          style={styles.reponse}
+          style={styles.textmessage}
           onPress={() => {
             setIdActivity("");
             setSelectedChoice([choice1]);
@@ -100,9 +99,9 @@ const ActivityChoiceScreen = ({ navigation }) => {
           {choice1}
         </Text>
       </View>
-      <View>
+      <View style={styles.reponse}>
         <Text
-          style={styles.reponse}
+          style={styles.textmessage}
           onPress={() => {
             setIdActivity("");
             setSelectedChoice([choice2]);
@@ -112,9 +111,9 @@ const ActivityChoiceScreen = ({ navigation }) => {
           {choice2}
         </Text>
       </View>
-      <View>
+      <View style={styles.reponse}>
         <Text
-          style={styles.reponse}
+          style={styles.textmessage}
           onPress={() => {
             setIdActivity("");
             setSelectedChoice([choice3]);
