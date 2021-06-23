@@ -9,7 +9,7 @@ const styleLogin = StyleSheet.create({
   title: {},
   logo: {
     flex: 1,
-    height: 200,
+    height: 250,
     width: 200,
     alignSelf: "center",
     marginTop: 100,
