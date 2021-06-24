@@ -1,66 +1,58 @@
 import { NavigationContainer } from "@react-navigation/native";
-import { StatusBar } from "expo-status-bar";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
-  Modal,
-  TextInput,
-  Button,
-  FlatList,
-  Linking,
-  RefreshControl,
-  ScrollView,
-  SectionList,
   StyleSheet,
   Text,
   View,
-  Touchable,
-  TouchableOpacity,
-  TouchableHighlight,
-  TouchableWithoutFeedback,
   Pressable,
-  Alert,
-  ToastAndroid,
+  Image,
+  Button,
+  TouchableOpacity,
 } from "react-native";
-import { createStackNavigator } from "@react-navigation/stack";
+import { db, firebase } from "../firebase";
+import styleProfile from "./style_profile";
+const ProfileScreen = ({ navigation }) => {
+  const [fullName, setFullName] = useState("");
+  const [email, setEmail] = useState("email");
+  const [idUser, setIdUser] = useState("id");
+  useEffect(() => {
+    if (fullName == "") {
+      //setFullName("NewName");
+      console.log("useEffect1");
+      get_fullName();
+    }
+  });
 
-export default function ProfilScreen({ navigation }) {
-  const onPressHandler = () => {
-    // navigation.navigate('Screen_A')
-    navigation.goBack();
+  const get_fullName = () => {
+    console.log("start fullName");
+    const tb = [];
+    if (firebase.auth().currentUser !== null)
+      setIdUser(firebase.auth().currentUser.uid);
+    else return;
+    db.collection("users")
+      .where("id", "==", idUser)
+      .get()
+      .then((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+          tb.push(doc.data().fullName);
+          tb.push(doc.data().email);
+          setFullName(tb[0]);
+          setEmail(tb[1]);
+        });
+      });
   };
-
   return (
-    <View style={styles.body}>
-      <Text style={styles.text}>Profil Screen</Text>
-      {/*         <Text style={styles.text}>
-          Screen B
-        </Text>
-  
-        <Pressable
-        onPress={onPressHandler}
-        style={({pressed})=> ({backgroundColor: pressed ? '#ddd' : '#0f0'})}
-        
-        >
-          <Text style={styles.text}>
-  
-            Go back to Screen A
-          </Text>
-  
-        </Pressable> */}
+    <View style={styleProfile.container}>
+      <View style={styleProfile.top}>
+        <Text style={styleProfile.baseText}>{fullName}</Text>
+        <Text style={styleProfile.baseText}>{email}</Text>
+      </View>
+      <View style={styleProfile.down}>
+        <TouchableOpacity style={styleProfile.button}>
+          <Text style={styleProfile.buttonTitle}>Log Out</Text>
+        </TouchableOpacity>
+      </View>
     </View>
   );
-}
-
-const styles = StyleSheet.create({
-  body: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-
-  text: {
-    fontSize: 40,
-    fontWeight: "bold",
-    margin: 10,
-  },
-});
+};
+export default ProfileScreen;
