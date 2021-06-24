@@ -8,6 +8,12 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     textAlign: "center",
   },
+
+  scrollview: {
+    flex: 1,
+    backgroundColor: "#FDECDC",
+
+  },
   center: {
     flex: 1,
     alignItems: "center",
