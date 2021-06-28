@@ -24,6 +24,9 @@ export default function ResultsScreen({ navigation }) {
   const [listNameMood, setListNameMood] = useState([]);
   const [idUser, setIdUser] = useState("");
 
+
+
+
   function get_activities_id() {
     const tb = [];
     if (firebase.auth().currentUser !== null)
@@ -49,19 +52,60 @@ export default function ResultsScreen({ navigation }) {
         mood.push(doc.data().name_mood);
       });
     });
-    // get the last 7 elemnt of the array
 
-  //lastSeven.slice(Math.max(date.length - 7, 0));
+ 
   setListDateMood(date);
   setListNameMood(mood);
   console.log(listDateMood);
   console.log(listNameMood);
-  const newData = [];
+   // get the last 7 element of the array Date
+  const newDataDate = [];
   for (let i= 0; i < 7; i++){
     const last = listDateMood.pop();
-    newData.push(last);
+    newDataDate.push(last);
   }
-  console.log(newData);
+  console.log(newDataDate);
+  const reversedDate = newDataDate.reverse();
+  console.log(reversedDate);
+  // get the last 7 element of the array Mood
+  const newDataMood = [];
+  for (let i= 0; i < 7; i++){
+    const last = listNameMood.pop();
+    newDataMood.push(last);
+  }
+  console.log(newDataMood);
+  const reversedMood = newDataMood.reverse();
+  console.log(reversedMood);
+  // switch the labels for the mood with their values for the chart
+  for (const i in reversedMood){
+    switch (reversedMood[i]){
+      case 'very happy':
+        reversedMood[i] = 100;
+        break;
+      case 'happy':
+        reversedMood[i] = 70;
+        break;
+      case 'sad':
+        reversedMood[i] = 30;
+        break;
+      case 'deplored':
+        reversedMood[i] = 0;
+        break;
+      default:
+        reversedMood[i] = 'undefined';
+    }
+      
+  }
+  console.log(reversedMood);
+  // set the Bar chart with the values corresponding for the last week
+/*   setBarData({labels: reversedDate,
+  datasets: [
+    {
+      data: reversedMood,
+    },
+  ],}) */
+
+
   }
 
   const set_CountPersonal = () => {
@@ -158,6 +202,7 @@ export default function ResultsScreen({ navigation }) {
 
   const [barData, setBarData]  = useState({
     labels: ['01-01', '02-01', '03-01', '04-01', '05-01', '06-01','07-01'],
+    //labels: date,
     datasets: [
       {
         data: [100, 70, 0, 25, 70, 0, 25],
@@ -190,7 +235,7 @@ export default function ResultsScreen({ navigation }) {
           Click 3 Times to Actualize
         </Text>
       </View>
-      <View style={styles.message}>
+     {/*  <View style={styles.message}>
         <View>
           <Text style={styles.textmessage}>
             Mood according to the day :
@@ -203,7 +248,7 @@ export default function ResultsScreen({ navigation }) {
         width={screenWidth}
         height={220}
         chartConfig={chartConfigBar}
-      />
+      /> */}
 
     </ScrollView>
 
